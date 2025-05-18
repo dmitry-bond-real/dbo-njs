@@ -1,6 +1,6 @@
 {
   "name": "@dmitry_bond_real/fp-fixer",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "fixing floating-point values in objects to have appropriate scale",
   "keywords": [
     "floating-point",
@@ -12,6 +12,10 @@
   "type": "commonjs", 
   "main": "./dist/fp-fixer.js", 
   "types": "./dist/fp-fixer.d.ts", 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmitry-bond-real/dbo-njs/tree/main/npmjs/fp-fixer"
+  },
   "scripts": {
     "start": "tsc && node ./index.js",
     "build": "tsc",
@@ -21,8 +25,5 @@
     "@types/node": "^22.15.18",
     "typescript": "^5.8.3"
   },
-  "dependencies": {
-    "chalk": "^5.4.1"
-  },
-  "publishConfig": { "access": "private" }
+  "publishConfig": { "access": "restricted" }
 }

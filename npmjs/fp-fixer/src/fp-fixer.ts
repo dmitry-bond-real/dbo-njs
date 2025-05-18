@@ -151,11 +151,11 @@ export const getFpFixerCfg = (ctx: FpFixerContext, entityName: string): FpFieldD
  * @param {object} rec - object in which fp-values should be fixed.
  * @param {FpFieldDescriptor[]} fpCfg - fp-fixer definitions.
  */
-export const fixFpFields = (rec: any, ctx: FpFixerContext, entityName: string) => {
+export const fixFpFields = (rec: any, ctx: FpFixerContext, entityName?: string) => {
   fixFpFieldsImpl(rec, ctx, entityName, 0)
 }
 
-const fixFpFieldsImpl = (rec: any, ctx: FpFixerContext, entityName: string, rcrLvl: number=0) => {
+const fixFpFieldsImpl = (rec: any, ctx: FpFixerContext, entityName?: string, rcrLvl: number=0) => {
   if (!rec) return 
   if (!ctx) return //throw 'FP-Fixer config is not specified'
 
@@ -176,7 +176,7 @@ const fixFpFieldsImpl = (rec: any, ctx: FpFixerContext, entityName: string, rcrL
 
   // 1. processing fp-field values
   let fpCfg = localCtx.config
-  if (!fpCfg) 
+  if (!fpCfg && entityName) 
     fpCfg = getFpFixerCfg(localCtx, entityName)
   if (!fpCfg) {
     console.error(`ERR: FpFixer[${entityName}/lvl=${rcrLvl}]: no definitions!`)
@@ -217,4 +217,3 @@ const fixFpFieldsImpl = (rec: any, ctx: FpFixerContext, entityName: string, rcrL
     }
   }
 }
-
